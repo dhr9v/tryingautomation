@@ -217,16 +217,16 @@ def perform_spotify_search(query: str):
         time.sleep(1.5)
     except:
         pass
-    pyautogui.moveTo(*SPOTIFY_SEARCH_BAR_COORDS)
-    pyautogui.click()
-    time.sleep(0.2)
-    pyautogui.hotkey('ctrl', 'a')
-    pyautogui.press('delete')
+
+    # Press Ctrl+K to open Spotify search
+    pyautogui.hotkey('ctrl', 'k')
+    time.sleep(0.5)
     pyautogui.write(query, interval=0.05)
-    time.sleep(1.5)
-    pyautogui.moveTo(*SPOTIFY_TOP_SONG_COORDS)
-    pyautogui.click()
+    time.sleep(1)  # Wait for search results to load
+    pyautogui.hotkey('shift', 'enter')  # Play the first search result
     time.sleep(1)
+    pyautogui.press('escape')  
+
 
 def open_spotify_song(song_name: str):
     open_app_windows_search(SPOTIFY_APP_NAME)
